@@ -1,0 +1,38 @@
+###Users table (deviseを使用して生成)
+email
+/nickname
+/member(?)
+/profile
+/works
+/introduce
+/avatar関連（paperclipを使用）
+
++自動生成
+
+###Movies table
+title
+/紹介画像:main
+/参考画像:sub1,sub2,sub3
+/キャッチコピー:copy
+/コンセプト:concept
+
+**LIKE(お気に入り)機能の実装についてのカラムは検討中**
+
++自動生成
+
+###Comments table
+コメント内容:detail
+user_id
+
++自動生成
+
+###Tags table
+category
+
++自動生成
+
+###Movies_Tags table
+movies_id
+tags_id
+
++自動生成
