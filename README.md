@@ -1,69 +1,6 @@
 >
 # Moviespace
 
-## DB設計
-
-### Users table (deviseを使用して生成)
->
-*has_many  movies / thumbnails / comments / likes*
-
-email
-/nickname
-/member
-/profile
-/works
-/introduce
-/avatar（carrierwaveを使用）
-
-+自動生成
-
-### Movies table
->
-*has_many comments / photos / likes*
->
-*has_one thumbnail*
->
-*belongs_to user*
-
-title
-/キャッチコピー:copy
-/コンセプト:concept
-/user_id
-
-+自動生成
-
-###Likes table (カウンターキャッシュ用)
-
->
-*belongs_to movie / user*
-
-movie_id
-/user_id（like したユーザのid）
-
-+自動生成
-
-### Comments table
->
-*belongs_to user / movie*
-
-コメント内容:text
-/user_id
-/movie_id
-
-+自動生成
-
-### Thumbnails table
->
-*belongs_to movie*
-
-title
-/movie_id
-/status(main/sub --> enumを使用)
-
-### Tags table (Gem:acts_as_taggable を使用)
-
-***
-
 ## サイト設計
 
 
@@ -120,3 +57,64 @@ moviesテーブル系：部分テンプレート_thumbnail を一覧表示(creat
 **icon/nickname/email/password/menber?/profile** が編集可能。更新ボタンあり
 
 ***
+
+## DB設計
+
+### Users table (deviseを使用して生成)
+>
+*has_many  movies / thumbnails / comments*
+
+email
+/nickname
+/member **(protospace上でこのカラムが何を表しているのかがイマイチよくわかりません)**
+/profile
+/works
+/introduce
+/avatar関連（carrierwaveを使用）
+
++自動生成
+
+### Movies table
+>
+*has_many comments / photos*
+>
+*has_one thumbnail*
+>
+*belongs_to user*
+
+title
+/キャッチコピー:copy
+/コンセプト:concept
+/user_id
+
+**LIKE(お気に入り)機能の実装についてのカラムは検討中**
+
++自動生成
+
+### thumbnails table
+>
+*has_many photos*
+>
+*belongs_to movie / user*
+
+movie_id
+/user_id
+
+### Comments table
+>
+*belongs_to user / movie*
+
+コメント内容:detail
+/user_id
+/movie_id
+
++自動生成
+
+### Photos table
+>
+*belongs_to movie / thumbnail*
+
+title
+/movie_id
+/thumbnail_id
+/status(main/sub)
