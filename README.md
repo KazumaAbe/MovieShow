@@ -3,7 +3,9 @@
 ## **Users table** (deviseを使用して生成)
 
 >**has_many :movies
+
 >has_many :thumbnails
+
 >has_many :comments**
 
 * email
@@ -17,8 +19,10 @@
 
 ## **Movies table**
 >**has_many :comments
-has_many :thumbnails
-has_many :likes**
+
+>has_many :thumbnails
+
+>has_many :likes**
 
 >**belongs_to :user**
 
@@ -31,6 +35,7 @@ has_many :likes**
 ## **Likes table**（カウンターキャッシュ用）
 
 >**belongs_to :movie
+
 >belongs_to :user**
 
 * movie_id
@@ -39,6 +44,7 @@ has_many :likes**
 
 ## **Comments table**
 >**belongs_to :user
+
 >belongs_to :movie**
 
 * text (コメント内容)
