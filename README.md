@@ -61,3 +61,4 @@
 * status(main/sub --> enumを使用)
 
 ## **Tags table**（Gem:acts_as_taggable を使用）
+
