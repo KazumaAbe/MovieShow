@@ -4,9 +4,9 @@
 
 >**has_many :movies**
 
->**has_many :thumbnails**
-
 >**has_many :comments**
+
+>**has_many :likes**
 
 * email
 * nickname
@@ -18,6 +18,7 @@
 
 
 ## **Movies table**
+
 >**has_many :comments**
 
 >**has_many :thumbnails**
@@ -30,6 +31,8 @@
 * copy (キャッチコピー)
 * concept (コンセプト)
 * user_id
+* like_count
+* comment_count
 
 
 ## **Likes table**（カウンターキャッシュ用）
@@ -43,6 +46,7 @@
 
 
 ## **Comments table**
+
 >**belongs_to :user**
 
 >**belongs_to :movie**
