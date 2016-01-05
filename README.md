@@ -1,60 +1,68 @@
->
-# MovieShow
+# **Moviespace DB設計**
 
-## 概要
-個人が制作した動画（撮影のみでなく、編集が加えられたもの／アニメーション）を投稿・閲覧できるスペース。
+## **Users table** (deviseを使用して生成)
 
-各プロダクトのページでは、動画プレビュー／動画ダウンロード／制作プロセス解説　等が閲覧できる。
+>**has_many :movies**
 
-## サイト設計
+>**has_many :comments, :dependent => :destroy**
+
+>**has_many :likes, :dependent => :destroy**
+
+* email
+* nickname
+* member
+* profile
+* works
+* introduce
+* avatar（carrierwaveを使用）
 
 
-### 0. header_bar
-全ページ共通のヘッダーバー ( position:fixed; )
+## **Movies table**
 
-**遷移**：トップページへのリンクアイコン（左）  
-　　　新規登録ボタン／ログイン・ログアウトボタン／マイページボタン（プルタブでmypage,edit,logout）／新規投稿ボタン
+>**has_many :comments, :dependent => :destroy**
 
-### 1. index
-トップページ。各プロダクトのサムネイルを表示。
+>**has_many :thumbnails, :dependent => :destroy**
 
-**機能**：人気順表示／新着順表示、ページネーション（Gem）
+>**has_many :likes, :dependent => :destroy**
 
-**遷移**：タグ一覧へ（ボタン）
+>**belongs_to :user**
 
-####１−１．_thumbnail
+* title
+* copy (キャッチコピー)
+* concept (コンセプト)
+* user_id
+* like_count
+* comment_count
 
-各サムネイル（部分テンプレート）の仕様
 
-紹介画像:main(movies)／作品名:title(movies)／ユーザのニックネーム:nickname(users)／投稿月日:created_at(movies)
+## **Likes table**（カウンターキャッシュ用）
 
-タグ:多対多のアソシエーション(movies_tagsテーブルを経由）
+>**belongs_to :movie**
 
- **遷移**：紹介画像mainから各moviesページへ／ニックネームnicknameから各usersページへ
+>**belongs_to :user**
 
-### 2. tags
-タグ検索ができる、タグ一覧のページ。
+* movie_id
+* user_id（likeしたユーザのid）
 
-**遷移**：各タブボタンから、そのタグを検索キーにした検索結果ページに遷移
 
-### 3. moviesページ（プロダクトページ）
+## **Comments table**
 
-投稿ユーザ系usersテーブル･･･ユーザアイコン:icon／自己紹介文:introduce／ニックネーム:nickname
+>**belongs_to :user**
 
-画像系moviesテーブル･･･紹介画像:main／参考画像:sub／お気に入り（不明）／キャッチコピー:copy／コンセプト:concept／タグ一覧:tagsテーブルとのアソシエーション／コメント：commentsテーブルとのアソシエーション
+>**belongs_to :movie**
 
-コメント系commentsテーブル（usersテーブルとアソシエーション：user対comments）･･･ユーザアイコン:icon／ニックネーム:nickname／コメント:comment
+* text (コメント内容)
+* user_id
+* movie_id
 
-**フォーム(JSで実装・非ログイン時は非表示)**：commentsテーブルに保存･･･コメント内容:detail／ユーザid:current_user.id(devise)
 
-**遷移**：各ユーザアイコンから各usersページへ／投稿者のニックネームnicknameから投稿者usersページへ／タグボタンから各タグに紐づく作品一覧画面へ
+## **Thumbnails table**
 
-### 4. usersページ（マイページ）
+>**belongs_to movie**
 
-usersテーブル系：グループ？:menber／プロフィール:profile／所属:works
+* title
+* movie_id
+* status(main/sub --> enumを使用)
 
-moviesテーブル系：部分テンプレート_thumbnail を一覧表示(created_at降順)
+## **Tags table**（Gem:acts_as_taggable を使用）
 
-### 5. users/user.id/edit（プロフィール編集ページ）
-
-**icon/nickname/email/password/menber?/profile** が編集可能。更新ボタンあり
