@@ -4,9 +4,9 @@
 
 >**has_many :movies**
 
->**has_many :comments**
+>**has_many :comments, :dependent => :destroy**
 
->**has_many :likes**
+>**has_many :likes, :dependent => :destroy**
 
 * email
 * nickname
@@ -19,11 +19,11 @@
 
 ## **Movies table**
 
->**has_many :comments**
+>**has_many :comments, :dependent => :destroy**
 
->**has_many :thumbnails**
+>**has_many :thumbnails, :dependent => :destroy**
 
->**has_many :likes**
+>**has_many :likes, :dependent => :destroy**
 
 >**belongs_to :user**
 
