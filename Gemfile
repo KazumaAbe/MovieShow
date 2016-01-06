@@ -52,7 +52,11 @@ gem 'pry-rails'
 gem 'compass-rails','~> 2.0'
 gem 'sprockets', '2.11.0'
 gem 'kaminari'
+
 gem 'haml-rails'
+<<<<<<< HEAD
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+=======
+>>>>>>> 9c10a36b333f66304ccad42c540228dc3b7ac94e
