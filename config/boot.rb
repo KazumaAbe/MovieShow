@@ -3,7 +3,7 @@ module Rails
   class Server
     def default_options
       super.merge({
-        :Port => 80
+        :Port => 3306
       })
     end
   end
