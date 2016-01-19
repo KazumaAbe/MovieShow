@@ -17,6 +17,7 @@ default: &default
   password: a0934604
   socket: /tmp/mysql.sock
   host: localhost
+  port: 3306
 
 development:
   <<: *default
