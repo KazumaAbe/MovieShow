@@ -7,25 +7,26 @@
     %a.navbar-brand(href="/")
       = image_tag("logo.png", :alt => "PROTO TYPE - SHARE THE PROTOTYPE", :height => "36px")
     .navbar-collapse.collapse.navbar-responsive-collapse
-      //not login 
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          .btn.btn-primary.navbar-btn
-            %a{:href => "/login"}
-              Get Started
-      //login
-      %ul.nav.navbar-nav.navbar-right
-        %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            UserName
-            %span.caret
-          %ul.dropdown-menu{:role => "menu"}
-            %li
-              %a{:href => "#"} Profile Edit
-            %li
-              %a{:href => "#"} Logout
-        %li
-          .btn.btn-primary.navbar-btn
-            %a{:href => "/proto/new"}
-              New Proto
-              
+    
+      -if user_signed_in? #login
+        %ul.nav.navbar-nav.navbar-right
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              UserName
+              %span.caret
+            %ul.dropdown-menu{:role => "menu"}
+              %li
+                %a{:href => "#"} Profile Edit
+              %li
+                %a{:href => "#"} Logout
+          %li
+            .btn.btn-primary.navbar-btn
+              %a{:href => "/proto/new"}
+                New Proto
+
+      -else #not login 
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            .btn.btn-primary.navbar-btn
+              %a{:href => "/login"}
+                Get Started
