@@ -6,11 +6,12 @@ gem 'rails', '4.2.4'
 # Use mysql as the database for Active Record
 gem 'mysql2', '0.3.18'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 4.0.2'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-script-source', '1.8.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
@@ -61,3 +62,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 # >>>>>>> 9c10a36b333f66304ccad42c540228dc3b7ac94e
 # =======
 gem 'haml-rails'
+gem 'bootstrap-sass', '3.2.0.2'
+
