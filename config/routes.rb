@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'top#index'
 
-  devise_for :users
+  devise_for :users, :controllers => {
+  :sessions      => "users/sessions",
+  :registrations => "users/registrations",
+  :passwords     => "users/passwords"
+}
 
   # get  '/top'               =>    'top#index'
   # get  '/proto'             =>    'proto#index'
