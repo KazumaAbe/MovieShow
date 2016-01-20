@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   :passwords     => "users/passwords"
 }
 
+  resources :user, only: :show
+
   # get  '/top'               =>    'top#index'
   # get  '/proto'             =>    'proto#index'
   # get  '/proto/new'         =>    'proto#new'

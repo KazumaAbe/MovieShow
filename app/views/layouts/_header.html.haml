@@ -16,6 +16,8 @@
               %span.caret
             %ul.dropdown-menu{:role => "menu"}
               %li
+                %a{:href => "/user/#{current_user.id}"} My Page
+              %li
                 %a{:href => "/users/edit"} Profile Edit
               %li
                 = link_to "LogOut", destroy_user_session_path, :method => :delete
