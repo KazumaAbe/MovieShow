@@ -1,6 +1,6 @@
 .navbar.navbar-default.navbar-static-top.navbar-fixed-top
   .container
-    %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
+    = button_tag(data: { toggle: 'collapse', target: '.navbar-responsive-collapse' }, class: 'navbar-toggle') do
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
@@ -19,7 +19,7 @@
               %li
                 = link_to 'Profile Edit', edit_user_registration_path(current_user)
               %li
-                = link_to 'Log Out', destroy_user_session_path, :method => :delete
+                = link_to 'Log Out', destroy_user_session_path, method: :delete
           %li
             .btn.btn-primary.navbar-btn
               = link_to 'New Proto', new_proto_path
