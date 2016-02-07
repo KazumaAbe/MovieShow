@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123153355) do
+ActiveRecord::Schema.define(version: 20160207034347) do
 
   create_table "movies", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20160123153355) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "thumbnails", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.integer  "movie_id",   limit: 4
+    t.integer  "status",     limit: 4,   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "thumbnails", ["status"], name: "index_thumbnails_on_status", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
