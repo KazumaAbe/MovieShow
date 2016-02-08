@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :movies
 
+  mount_uploader :avatar, AvatarUploader
+
 end
