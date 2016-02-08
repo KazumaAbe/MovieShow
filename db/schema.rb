@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160207034347) do
   create_table "thumbnails", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.integer  "movie_id",   limit: 4
-    t.integer  "status",     limit: 4,   null: false
+    t.integer  "status",     limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
