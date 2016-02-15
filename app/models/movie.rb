@@ -6,7 +6,7 @@ class Movie < ActiveRecord::Base
   accepts_nested_attributes_for :thumbnails, reject_if: :reject_thumbnails
 
   def reject_thumbnails(attributes)
-    attributes['thumbnail'].blank?
+    attributes['title'].blank?
   end
 
 end

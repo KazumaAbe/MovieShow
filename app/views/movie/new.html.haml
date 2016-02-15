@@ -1,38 +1,38 @@
-.container
-  = form_for(@movie, url: movie_index_path, html: { class: 'container proto-new' }) do |f|
-    .col-md-8.col-md-offset-2
-      %header.row.user-nav.row
-        .col-md-12
-          .proto-new-title
-            = f.text_field :title, placeholder: "Title"
-      .row
-        .col-md-12
-          .cover-image-upload
-            = f.fields_for :thumbnails do |t|
-              = t.file_field :thumbnail
-              = t.hidden_field :status, value: 'main'
-        .col-md-12
-        -3.times do
-          %ul.proto-sub-list.list-group
-            %li.list-group-item.col-md-4
-              .image-uplod
-                = f.fields_for :thumbnails do |t|
-                  = t.file_field :thumbnail
-                  = t.hidden_field :status, value: 'sub'
-      = f.file_field :thumbnail
-      .row.proto-description
-        .col-md-12
-          = f.text_field :copy, placeholder: "Catch Copy"
-        .col-md-12
-          = f.text_area :concept, placeholder: "Concept", cols: "30", rows: "4"
-    .col-md-12
-    %h4 Tag List
+= form_for @movie, url: movie_index_path, html: { class: 'container proto-new' } do |f|
+  .col-md-8.col-md-offset-2
+    %header.row.user-nav.row
+      .col-md-12
+        = f.text_field :title, placeholder: "Title", class: 'proto-new-title'
     .row
-    .col-md-3
-    %input{type: "text", placeholder: "Web Design"}/
-    .col-md-3
-    %input{type: "text", placeholder: "UI"}/
-    .col-md-3
-    %input{type: "text", placeholder: "Application"}/
+      .col-md-12
+        = f.fields_for :thumbnails do |t|
+          .cover-image-upload
+            = t.file_field :title
+            = t.hidden_field :status, value: 'main'
+      .col-md-12
+        %ul.proto-sub-list.list-group
+          - 2.times do
+            = f.fields_for :thumbnails do |t|
+              %li.list-group-item.col-md-4
+                .image-uplod
+                  = t.file_field :title
+                  = t.hidden_field :status, value: 'sub'
+          %li.list-group-item.col-md-4
+            .image-upload-plus
+              %span +
+    .row.proto-description
+      .col-md-12
+        = f.text_field :copy, placeholder: "Catch Copy"
+      .col-md-12
+        = f.text_area :concept, placeholder: "Concept", cols: "30", rows: "4"
+      .col-md-12
+        %h4 Tag List
+        .row
+          .col-md-3
+            %input{type: "text", placeholder: "Web Design"}/
+          .col-md-3
+            %input{type: "text", placeholder: "UI"}/
+          .col-md-3
+            %input{type: "text", placeholder: "Application"}/
     .row.text-center.proto-btn
-    = f.submit 'Publish', class: "button btn btn-lg btn-primary btn-block"
+      = f.submit 'Publish', class: "button btn btn-lg btn-primary btn-block"
