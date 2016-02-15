@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 
   resources :user, only: :show
   resources :movie do
-    resources :thumbnails
+    resources :thumbnail
   end
 
 end
+
