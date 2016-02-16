@@ -5,15 +5,17 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'top#index'
+
+  root 'movie#index'
 
   devise_for :users, controllers: {
-  sessions:       "users/sessions",
-  registrations:  "users/registrations",
-  passwords:      "users/passwords"
+  registrations:  "users/registrations"
 }
 
   resources :user, only: :show
-  resources :proto, only: [:new, :index]
+  resources :movie do
+    resources :thumbnail
+  end
 
 end
+

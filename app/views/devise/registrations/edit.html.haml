@@ -7,7 +7,7 @@
         .user-name_image.row
           .user-name.col-md-10
             = f.text_field :nickname, value: current_user.nickname, autodocus: true
-          .user-image.col-md-2{ style: 'background-image: url(http://泣ける動画.com/wp-content/uploads/2015/01/t0205-01.jpg);' }
+          .user-image.col-md-2
             = button_tag 'Change Image', html: { class: 'btn btn-primary' }
             = f.file_field :avatar
         %h4 Email

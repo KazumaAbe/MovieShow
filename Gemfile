@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use mysql as the database for Active Record
-gem 'mysql2', '0.3.18'
+gem 'mysql2', '0.3.20'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 # Use Uglifier as compressor for JavaScript assets
@@ -55,12 +55,18 @@ gem 'sprockets', '2.11.0'
 gem 'kaminari'
 
 gem 'haml-rails'
+gem 'carrierwave'
+gem 'rmagick'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 # =======
 # >>>>>>> 9c10a36b333f66304ccad42c540228dc3b7ac94e
 # =======
+<<<<<<< HEAD
 gem 'haml-rails'
 gem 'bootstrap-sass', '3.2.0.2'
 gem 'erb2haml'
+=======
+gem 'bootstrap-sass', '3.2.0.2'
+>>>>>>> post_prototype

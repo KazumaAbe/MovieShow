@@ -1,0 +1,18 @@
+.col-sm-4.col-md-3.proto-content
+  .thumbnail
+  = link_to image_tag(movie.title), movie_path(movie)
+  .captionz
+    %h3
+    = movie.title
+    .proto-meta
+      .proto-user
+      = link_to ('#') do
+        = movie.user.nickname
+      .proto-posted
+        = movie.created_at.strftime("%b%d")
+    %ul.proto-tag-list.list-inline
+      %li
+        = link_to "iPad", "#", class: 'btn btn-default'
+      %li
+        = link_to "wireframe", "#", class: 'btn btn-default'
+        
