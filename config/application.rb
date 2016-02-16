@@ -14,7 +14,6 @@ module Moviespace
 
     config.generators do |g|
         g.helper false
-        g.assets false
     end
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
