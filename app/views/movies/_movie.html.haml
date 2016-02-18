@@ -1,4 +1,11 @@
 .col-sm-4.col-md-3.proto-content
+  - if user_signed_in?
+    - if movie.user_id == current_user.id
+      .dropdown.drop_menu_location
+        = button_tag "Action", data: { toggle: 'dropdown' }, id: 'dropdownMenu', class: 'btn btn-default dropdown-toggle'
+        %ul.dropdown-menu{ aria: { labelledby: 'dropdownMenu1' } }
+          %li
+            = link_to 'Edit', edit_movie_path(movie)
   .thumbnail
   = link_to image_tag(movie.title), movie_path(movie)
   .captionz
@@ -15,4 +22,3 @@
         = link_to "iPad", "#", class: 'btn btn-default'
       %li
         = link_to "wireframe", "#", class: 'btn btn-default'
-        

@@ -10,13 +10,23 @@ def new
 end
 
 def create
-  Movie.create(create_params)
+  @movie = Movie.create(movie_params)
   redirect_to :root
 end
 
+def edit
+  @movie = Movie.find(params[:id])
+end
+
+def update
+  movie = Movie.find(params[:id])
+  movie.update(movie_params) if movie.user_id == current_user.id
+  redirect_to action: :index
+end
+
 private
-  def create_params
-    params.require(:movie).permit(:title, :copy, :concept, thumbnails_attributes: [:id,:title, :status]).merge(user_id: current_user.id)
+  def movie_params
+    params.require(:movie).permit(:title, :copy, :concept, thumbnails_attributes: [:id, :title, :status]).merge(user_id: current_user.id)
   end
 
 end
