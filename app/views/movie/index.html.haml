@@ -1,6 +1,6 @@
 .jumbotron
   .container.text-center
-    = image_tag("header_logo.png", alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "73px")
+    = image_tag 'header_logo.png', alt: 'PROTO TYPE - SHARE THE PROTOTYPE', height: "73px"
 .filter-nav
   .container
     .row
@@ -9,27 +9,27 @@
           = link_to "Popular MOVIE", "#"
         %li{ role: "presentation" }
           = link_to "Newest MOVIE", root_path, remote: true
-      = link_to "View Tags", html: { class: "btn btn-default col-lg-1" }
+      = link_to "View Tags", class: 'btn btn-default col-lg-1'
 .container.proto-list
   .row
   = render @movies
 .text-center
   %ul.pagination
     %li.disabled
-      %a{ aria: { label: "Previous" }, href: "#" }
-        %span{ aria: { hidden: "true" } }«
+      = link_to "#", aria: { label: :Previous }
+        %span{ aria { hidden: true } «
     %li.active
-      %a{ href: "#" }
+      = link_to '1', "#"
         1
         %span.sr-only (current)
     %li
-      %a{ href: "#" } 2
+      = link_to '2', "#"
     %li
-      %a{ href: "#" } 3
+      = link_to '3', "#"
     %li
-      %a{ href: "#" } 4
+      = link_to '4', "#"
     %li
-      %a{ href: "#" } 5
+      = link_to '5', "#"
     %li
-      %a{ aria: { label: "Next" }, href: "#" }
-        %span{ aria: { hidden: "true" } } »
+      = link_to "#", aria: { label: :next }
+        %span{ aria { hidden: true } »
