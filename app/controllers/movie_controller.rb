@@ -21,9 +21,9 @@ end
 
 def update
   if @movie.update(movie_params)
-    redirect_to :root, notice: '更新しました'
+    redirect_to :root, success: '更新しました'
   else
-    redirect_to action: :edit, notice: '更新できませんでした。タイトルとサムネイル画像を入力してください。'
+    redirect_to action: :edit, warning: '更新できませんでした。タイトルとサムネイル画像を入力してください。'
 end
 
 private

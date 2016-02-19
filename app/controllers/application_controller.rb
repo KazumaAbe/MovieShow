@@ -9,4 +9,6 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:account_update).push(:nickname, :member, :profile, :works, :introduce, :avatar)
   end
 
+  add_flash_types :success, :info, :warning, :danger
+
 end
