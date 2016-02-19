@@ -1,5 +1,7 @@
 class MovieController < ApplicationController
 
+  before_action :find_movie, only: [:edit, :update]
+
 def index
   @movies = Movie.order(id: :DESC).includes(:user)
 end
@@ -10,13 +12,29 @@ def new
 end
 
 def create
-  Movie.create(create_params)
+  Movie.create(movie_params)
   redirect_to :root
 end
 
+def edit
+end
+
+def update
+  if @movie.update(movie_params)
+    redirect_to :root, success: '更新しました'
+  else
+    redirect_to action: :edit, warning: '更新できませんでした。タイトルとサムネイル画像を入力してください。'
+end
+
 private
-  def create_params
-    params.require(:movie).permit(:title, :copy, :concept, thumbnails_attributes: [:id,:title, :status]).merge(user_id: current_user.id)
+  def movie_params
+    params.require(:movie).permit(:title, :copy, :concept, thumbnails_attributes: [:id, :title, :status]).merge(user_id: current_user.id)
   end
+
+  def find_movie
+    @movie = Movie.find(params[:id])
+  end
+
+end
 
 end
