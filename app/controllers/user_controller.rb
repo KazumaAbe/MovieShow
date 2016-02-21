@@ -1,8 +1,17 @@
 class UserController < ApplicationController
 
+  before_action :find_user, only: [:show]
+
   def show
-    @user = User.find(params[:id])
     @movies = current_user.movies.order(created_at: :DESC)
+  end
+
+end
+
+private
+
+  def find_user
+    @user = User.find(params[:id])
   end
 
 end
