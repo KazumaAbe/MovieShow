@@ -6,13 +6,15 @@
         %ul.dropdown-menu{ aria: { labelledby: 'dropdownMenu1' } }
           %li
             = link_to 'Edit', edit_movie_path(movie)
+          %li
+            = link_to 'Delete', movie_path(movie), method: :delete
   .thumbnail
     = link_to image_tag(movie.title), movie_path(movie)
   .captionz
     %h3 #{movie.title}
     .proto-meta
       .proto-user
-        = link_to movie.user.nickname, "#"
+        = link_to movie.user.nickname, user_path(movie.user)
       .proto-posted
         = movie.created_at.strftime("%b%d")
     %ul.proto-tag-list.list-inline

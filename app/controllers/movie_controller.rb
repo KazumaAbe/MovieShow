@@ -1,6 +1,6 @@
 class MovieController < ApplicationController
 
-  before_action :find_movie, only: [:edit, :update]
+  before_action :find_movie, only: [:edit, :update, :destroy]
 
 def index
   @movies = Movie.order(id: :DESC).includes(:user)
@@ -23,7 +23,15 @@ def update
   if @movie.update(movie_params)
     redirect_to :root, success: '更新しました'
   else
-    redirect_to action: :edit, warning: '更新できませんでした。タイトルとサムネイル画像を入力してください。'
+    redirect_to :back, warning: '更新できませんでした。タイトルとサムネイル画像を入力してください'
+end
+
+def destroy
+  if movie.user_id == current_user.id
+    movie.destroy
+    redirect_to :root, success: '作品を削除しました'
+  else
+    redirect_to :back, warning: '作品の削除ができませんでした、ログインした後に再度実行してください'
 end
 
 private
