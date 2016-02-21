@@ -12,8 +12,11 @@ def new
 end
 
 def create
-  Movie.create(movie_params)
-  redirect_to :root
+  if Movie.create(movie_params).valid?
+    redirect_to :root, success: '投稿が完了しました'
+  else
+    redirect_to :back, warning: '投稿できませんでした。タイトルとキャッチコピー、コンセプトを入力してください'
+  end
 end
 
 def edit
