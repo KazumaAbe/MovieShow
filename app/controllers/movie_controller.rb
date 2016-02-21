@@ -23,12 +23,15 @@ def update
   if @movie.update(movie_params)
     redirect_to :root, success: '更新しました'
   else
-    redirect_to action: :edit, warning: '更新できませんでした。タイトルとサムネイル画像を入力してください。'
+    redirect_to action: :edit, warning: '更新できませんでした。タイトルとサムネイル画像を入力してください'
 end
 
 def destroy
-  movie.destroy if movie.user_id == current_user.id
-  redirect_to :root, success: '作品を削除しました'
+  if movie.user_id == current_user.id
+    movie.destroy
+    redirect_to :root, success: '作品を削除しました'
+  else
+    redirect_to :root, warning: '作品の削除ができませんでした、ログインした後に再度実行してください'
 end
 
 private
