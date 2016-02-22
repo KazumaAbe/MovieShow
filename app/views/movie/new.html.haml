@@ -8,6 +8,7 @@
         = f.fields_for :thumbnails do |t|
           .cover-image-upload
             = t.file_field :title
+            %div.thumb-image
             = t.hidden_field :status, value: 'main'
       .col-md-12
         %ul.proto-sub-list.list-group
@@ -16,6 +17,7 @@
               %li.list-group-item.col-md-4
                 .image-uplod
                   = t.file_field :title
+                  %div.thumb-image
                   = t.hidden_field :status, value: 'sub'
           %li.list-group-item.col-md-4
             .image-upload-plus
