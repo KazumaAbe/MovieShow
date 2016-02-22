@@ -1,7 +1,7 @@
 class Thumbnail < ActiveRecord::Base
 
 belongs_to :movie
-mount_uploader :thumbnail, ThumbnailUploader
-enum status: %i(main sub)
+mount_uploader :title, TitleUploader
+enum status: [:main, :sub]
 
 end
