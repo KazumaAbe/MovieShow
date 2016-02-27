@@ -2,25 +2,25 @@
   %header.user-nav
     .media
       .media-left
-        = link_to image_tag(current_user.avatar, alt: '64x64', data: { holder: { rendered: true } }, class: 'media-object' ), user_path
+        = link_to image_tag(@user.avatar, size: '64x64', alt: '64x64', class: 'media-object'), user_path
       .media-body
         %h4#top-aligned-media.media-heading
           Top aligned media
           %span.label.label-default.project-number
-            = current_user.movies.length
+            = @user.movies.length
             %i Projects
         .proto-user
           %span.degree
-            = current_user.member
+            = @user.member
         .row
           .col-md-6
             %h4 Profile
             %p
-              = current_user.profile
+              = @user.profile
           .col-md-6
             %h4 Works
             %p
-              = current_user.works
+              = @user.works
 .container.proto-list
   .row
     = render @movies
@@ -28,12 +28,10 @@
 .text-center
   %ul.pagination
     %li.disabled
-      = link_to "#", aria: { label: :Previous }
-        %span{ aria { hidden: true } «
+      = link_to "#", aria: { label: :Previous } do
+        %span{ aria: { hidden: true } } «
     %li.active
       = link_to '1', "#"
-        1
-        %span.sr-only (current)
     %li
       = link_to '2', "#"
     %li
@@ -43,5 +41,5 @@
     %li
       = link_to '5', "#"
     %li
-      = link_to "#", aria: { label: :next }
-        %span{ aria { hidden: true } »
+      = link_to "#", aria: { label: :Next } do
+        %span{ aria: { hidden: true } } »

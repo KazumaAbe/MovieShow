@@ -6,8 +6,6 @@ class UserController < ApplicationController
     @movies = current_user.movies.order(created_at: :DESC)
   end
 
-end
-
 private
 
   def find_user

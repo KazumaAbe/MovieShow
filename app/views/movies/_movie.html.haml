@@ -9,8 +9,9 @@
           %li
             = link_to 'Delete', movie_path(movie), method: :delete
   .thumbnail
-    = link_to image_tag(movie.title), movie_path(movie)
-  .captionz
+    = link_to movie_path(movie) do
+      = image_tag(movie.thumbnails.first.title)
+  .caption
     %h3 #{movie.title}
     .proto-meta
       .proto-user
@@ -19,6 +20,6 @@
         = movie.created_at.strftime("%b%d")
     %ul.proto-tag-list.list-inline
       %li
-        = link_to "iPad", "#", class: 'btn btn-default'
+        = link_to 'iPad', "#", class: 'btn btn-default'
       %li
-        = link_to "wireframe", "#", class: 'btn btn-default'
+        = link_to 'wireframe', "#", class: 'btn btn-default'
