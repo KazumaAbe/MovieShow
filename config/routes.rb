@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   resources :movie do
     resources :thumbnail
   end
+  resources :comments, only: [:create]
 
 end
