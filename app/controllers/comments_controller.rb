@@ -3,9 +3,10 @@ class CommentsController < ApplicationController
   def create
     @movie = Movie.find(params[:comment][:movie_id])
 
-    @comment = Comment.create(comment_params) ?
+    @comment = Comment.new(comment_params)
+    @comment.save ?
     (redirect_to movie_path(@movie)) :
-    (redirect_to :back)
+    (redirect_to :back,  warning: '投稿できませんでした。コメントを入力してください')
   end
 
   private
