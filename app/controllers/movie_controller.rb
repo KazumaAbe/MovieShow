@@ -18,6 +18,8 @@ class MovieController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @movie.comments.order(created_at: :DESC)
   end
 
 

@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :movies
+  has_many :movies, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 

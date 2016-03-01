@@ -11,21 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207034347) do
+ActiveRecord::Schema.define(version: 20160227155226) do
 
-  create_table "movies", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.string   "copy",       limit: 255
-    t.text     "concept",    limit: 65535
+  create_table "comments", force: :cascade do |t|
+    t.string   "text",       limit: 255
     t.integer  "user_id",    limit: 4
+    t.integer  "movie_id",   limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string   "title",          limit: 255
+    t.string   "copy",           limit: 255
+    t.text     "concept",        limit: 65535
+    t.integer  "user_id",        limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "comments_count", limit: 4
   end
 
   create_table "thumbnails", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.integer  "movie_id",   limit: 4
-    t.integer  "status",     limit: 4
+    t.integer  "status",     limit: 4,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
