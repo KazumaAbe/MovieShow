@@ -56,7 +56,7 @@
     .col-md-8
       #comments
         = render partial: 'movies/comment', collection: @comments
-    = form_for @comment, html: { class: 'form-inline'}, role: 'form', remote: true do |f|
+    = form_for @comment, html: { class: 'form-inline'}, remote: true do |f|
       %h4 Write a comment
       .row
         .form-group.col-md-10
