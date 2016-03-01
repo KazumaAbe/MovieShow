@@ -2,11 +2,8 @@ class CommentsController < ApplicationController
 
   def create
     @movie = Movie.find(params[:comment][:movie_id])
-
-    @comment = Comment.new(comment_params)
-    unless @comment.save
-      warning: '投稿できませんでした。コメントを入力してください'
-    end
+    @comments = @movie.comments
+    @comment = Comment.create(comment_params)
   end
 
   private
