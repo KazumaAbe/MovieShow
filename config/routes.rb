@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     resources :thumbnail
   end
   resources :comments, only: [:create]
+  resources :likes, only: [:create, :destroy]
 
 end
