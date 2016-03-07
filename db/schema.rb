@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20160307020623) do
     t.datetime "updated_at"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "movie_id",   limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "movies", force: :cascade do |t|
     t.string   "title",          limit: 255
     t.string   "copy",           limit: 255
@@ -30,13 +37,6 @@ ActiveRecord::Schema.define(version: 20160307020623) do
     t.datetime "updated_at"
     t.integer  "comments_count", limit: 4
     t.integer  "likes_count",    limit: 4
-  end
-
-  create_table "table_likes", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "movie_id",   limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "thumbnails", force: :cascade do |t|
