@@ -1,18 +1,18 @@
 - if user_signed_in?
-  - if Like.exists?(movie_id: params[:id], user_id: current_user.id)
+  - if Like.like_exists(params[:id], current_user.id)
     = link_to like_path(movie_id: @movie.id), method: :delete, remote: true do
       = button_tag class: 'btn btn-default' do
-        = image_tag('icon_heart_like.svg')
+        = image_tag 'icon_heart_like.svg'
         Like
         %span.num #{ @movie.likes_count }
   - else
     = link_to likes_path(movie_id: @movie.id), method: :post, remote: true do
       = button_tag class: 'btn btn-default' do
-        = image_tag('icon_heart.svg')
+        = image_tag 'icon_heart.svg'
         Like
         %span.num #{ @movie.likes_count }
 - else
   = button_tag class: 'btn btn-default' do
-    = image_tag('icon_heart.svg')
+    = image_tag 'icon_heart.svg'
     Like
     %span.num #{ @movie.likes_count }
