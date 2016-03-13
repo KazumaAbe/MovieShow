@@ -6,9 +6,9 @@
     .row
       %ul.nav.nav-pills.col-lg-11
         %li.active{ role: "presentation" }
-          = link_to 'Popular MOVIE', "#"
+          = link_to 'Popular MOVIE', root_path(type: 'popular')
         %li{ role: "presentation" }
-          = link_to 'Newest MOVIE', root_path, remote: true
+          = link_to 'Newest MOVIE', root_path(type: 'newest')
       = link_to 'View Tags', "#", class: 'btn btn-default col-lg-1'
 .container.proto-list
   .row
