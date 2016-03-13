@@ -11,8 +11,7 @@
           = link_to 'Newest MOVIE', root_path(type: 'newest'), remote: true
       = link_to 'View Tags', "#", class: 'btn btn-default col-lg-1'
 .container.proto-list
-  .row
-    .movies
+  .movies
     = render @movies
 .text-center
   = paginate(@movies)
