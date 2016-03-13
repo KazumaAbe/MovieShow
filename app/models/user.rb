@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :movies, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes
 
   mount_uploader :avatar, AvatarUploader
 

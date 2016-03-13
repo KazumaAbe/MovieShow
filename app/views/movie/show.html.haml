@@ -9,7 +9,7 @@
           %h4#top-aligned-media.media-heading
             = @movie.title
           .proto-user
-            = link_to "by #{@movie.user.nickname}", user_path(@movie.user)
+            = link_to "by #{ @movie.user.nickname }", user_path(@movie.user)
             %span.degree
               %h4
                 Member:
@@ -19,10 +19,8 @@
                 = @movie.user.works
 
     .col-md-6.text-right
-      %button.btn.btn-default
-        = image_tag('icon_heart.svg')
-        Like
-        %span.num 20
+      #like
+        = render 'likes/like'
   .row
     .col-md-9
       = image_tag(@movie.thumbnails.main.first.title, class: 'img-responsive')
@@ -52,7 +50,7 @@
   .row.proto-comments
     %h4.col-md-12
       Comments
-      %span.num (#{@movie.comments_count})
+      %span.num (#{ @movie.comments_count })
     .col-md-8
       #comments
         = render partial: 'movies/comment', collection: @comments
