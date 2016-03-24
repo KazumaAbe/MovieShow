@@ -21,4 +21,4 @@
     %ul.proto-tag-list.list-inline
       - movie.tags.each do |tag|
         %li
-          = link_to tag, '#', class: 'btn btn-default'
+          = link_to tag, tag_path(tag.id), class: 'btn btn-default'
