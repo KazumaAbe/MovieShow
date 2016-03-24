@@ -27,11 +27,8 @@
       .col-md-12
         %h4 Tag List
         .row
-          .col-md-3
-            %input{ type: 'text', placeholder: 'Web Design' } /
-          .col-md-3
-            %input{ type: 'text', placeholder: 'UI' } /
-          .col-md-3
-            %input{ type: 'text', placeholder: 'Application' } /
+          - movie.tags.each do |tag|
+            %li
+              = text_field_tag 'movie[tag][]', tag.name, placeholder: tag.name
     .row.text-center.proto-btn
       = f.submit 'Publish', class: "button btn btn-lg btn-primary btn-block"
