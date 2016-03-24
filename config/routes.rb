@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   end
   resources :comments, only: [:create]
   resources :likes, only: [:create, :destroy]
-  resources :tags, only: :index
+  resources :tags, only: [:index, :show]
 
 end
