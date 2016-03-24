@@ -3,7 +3,13 @@ class MovieController < ApplicationController
   before_action :find_movie, only: [:show, :edit, :update, :destroy]
 
   def index
-    @movies = Movie.order(id: :DESC).includes(:user)
+    if params[:type] == 'newest'
+      @movies = Movie.order(created_at: :DESC).includes(:user).page(params[:page]).per(8)
+    elsif params[:type] == 'popular'
+      @movies = Movie.order(likes_count: :DESC).includes(:user).page(params[:page]).per(8)
+    else
+      @movies = Movie.all.includes(:user).page(params[:page]).per(8)
+    end
   end
 
   def new
