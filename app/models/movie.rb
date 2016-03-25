@@ -9,7 +9,7 @@ class Movie < ActiveRecord::Base
 
   validates :title, :copy, :concept, presence: true
 
-  acts-as-taggable
+  acts_as_taggable
 
   def reject_thumbnails(attributes)
     attributes['title'].blank?
