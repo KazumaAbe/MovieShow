@@ -5,7 +5,7 @@ class TagsController < ApplicationController
   end
 
   def show
-    @tag = ActsAsTaggableOn::Tag.most_used.find(params[:id])
+    @tag = ActsAsTaggableOn::Tag.find(params[:id])
     @moveis = Movie.tagged_with(@tag.name).page(params[:page])
     render 'movie/index'
   end
