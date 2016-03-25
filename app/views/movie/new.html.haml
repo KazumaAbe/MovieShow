@@ -31,10 +31,7 @@
         %h4 Tag List
         .row
           .col-md-3
-            = text_field_tag 'movie[tag][]', '', placeholder: 'Tag Name'
-          .col-md-3
-            = text_field_tag 'movie[tag][]', '', placeholder: 'Tag Name'
-          .col-md-3
-            = text_field_tag 'movie[tag][]', '', placeholder: 'Tag Name'
+            - 3.times do
+              = text_field_tag 'movie[tag][]', '', placeholder: 'Tag Name'
     .row.text-center.proto-btn
       = f.submit 'Publish', class: 'button btn btn-lg btn-primary btn-block'
