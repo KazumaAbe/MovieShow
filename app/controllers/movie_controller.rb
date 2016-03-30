@@ -47,7 +47,7 @@ class MovieController < ApplicationController
 
   private
     def movie_params
-      params.require(:movie).permit(:title, :copy, :concept, thumbnails_attributes: [:id, :title, :status]).merge(user_id: current_user.id)
+      params.require(:movie).permit(:title, :copy, :concept, thumbnails_attributes: [:id, :title, :status]).merge(user_id: current_user.id,tag_list: params[:movie][:tag])
     end
 
     def find_movie

@@ -42,10 +42,9 @@
     .col-md-3
       %h4 Tag List
       %ul.proto-tag-list.list-inline
+      - movie.tags.each do |tag|
         %li
-          = link_to 'iPad', "#", class: 'btn btn-default'
-        %li
-          = link_to 'wireframe', "#", class: 'btn btn-default'
+          = link_to tag, tag_path(tag.name), class: 'btn btn-default'
 
   .row.proto-comments
     %h4.col-md-12
