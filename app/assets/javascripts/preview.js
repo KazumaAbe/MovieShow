@@ -1,11 +1,12 @@
 $(function(){
-  for (var i=0 ; i <= 3 ; i++){
-    previewThumbnailsUploaded(i)
-  }
+  $(.thumbnail-field).each(
+    function(i){
+      previewThumbnailsUploaded('#thumb-' + i);
+  });
 });
 
-function previewThumbnailsUploaded(number){
-  $("input[type=file].thumb-" + number).change(
+function previewThumbnailsUploaded(this){
+  $(this).change(
     function() {
         if ( !this.files.length ) {
             return;
@@ -13,15 +14,15 @@ function previewThumbnailsUploaded(number){
 
         var file = $(this).prop('files')[0];
         var filereader = new FileReader();
-        fr.onload = function() {
+        filereader.onload = function() {
             $('<img>').attr('src', filereader.result).css({
               'display': 'inline',
               'width': '100%',
-              'height' : 'auto',
+              'height' : '100%',
               'text-align': 'center',
               'overflow': 'hidden'
             });
         }
-        fr.readAsDataURL(file);
+        filereader.readAsDataURL(file);
     });
 }
