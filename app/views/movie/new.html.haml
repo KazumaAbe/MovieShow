@@ -7,7 +7,7 @@
       .col-md-12
         = f.fields_for :thumbnails do |t|
           .cover-image-upload#thumb0
-            = t.file_field :title, class: 'thumbnail-field thumb-0'
+            = t.file_field :title, class: 'thumbnail-field', id: 'thumb-0'
             %div.thumb-image
             = t.hidden_field :status, value: 'main'
       .col-md-12
@@ -16,7 +16,7 @@
             = f.fields_for :thumbnails do |t|
               %li.list-group-item.col-md-4
                 .image-uplod{id: "thumb#{ i + 1 }"}
-                  = t.file_field :title, class: "thumbnail-field thumb-#{i}"
+                  = t.file_field :title, class: 'thumbnail-field', id: "thumb-#{i}"
                   %div.thumb-image
                   = t.hidden_field :status, value: 'sub'
           %li.list-group-item.col-md-4

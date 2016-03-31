@@ -9,17 +9,20 @@
           = f.fields_for :thumbnails, @movie.thumbnails.main do |t|
         .cover-image-upload#upload0
             = image_tag(@movie.thumbnails.main[0].title)
-            = t.file_field :title, class: 'thumbnail-field thumb-0'
+            = t.file_field :title, class: 'thumbnail-field', id: 'thumb-0'
             = t.hidden_field :status, value: :main
 
       .col-md-12
         - 2.times do |i|
           %ul.proto-sub-list.list-group
             %li.list-group-item.col-md-4
-              .image-upload{id: "thumb#{ i + 1 }"}
+              .image-upload{id: "upload#{ i + 1 }"}
                   = image_tag(@movie.thumbnails.main[0].title)
-                  = t.file_field :title, class: "thumbnail-field thumb-#{i}"
+                  = t.file_field :title, class: 'thumbnail-field', id: "thumb-#{i}"
                   = t.hidden_field :status, value: :sub
+            %li.list-group-item.col-md-4
+              .image-upload-plus
+                %span +
 
     .row.proto-description
       .col-md-12
