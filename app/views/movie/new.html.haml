@@ -6,7 +6,7 @@
     .row
       .col-md-12
         = f.fields_for :thumbnails do |t|
-          .cover-image-upload#upload0
+          .cover-image-upload#thumb0
             = t.file_field :title, class: 'thumbnail-field', id: 'thumb-0'
             %div.thumb-image
             = t.hidden_field :status, value: 'main'
@@ -15,13 +15,13 @@
           - 2.times do |i|
             = f.fields_for :thumbnails do |t|
               %li.list-group-item.col-md-4
-                .image-uplod{id: "upload#{ i + 1 }"}
+                .image-uplod{id: "thumb#{ i + 1 }"}
                   = t.file_field :title, class: 'thumbnail-field', id: "thumb-#{i}"
                   %div.thumb-image
                   = t.hidden_field :status, value: 'sub'
           %li.list-group-item.col-md-4
             .image-upload-plus
-              %span#plus-button +
+              %span +
     .row.proto-description
       .col-md-12
         = f.text_field :copy, placeholder: 'Catch Copy'
