@@ -5,8 +5,8 @@ $(function(){
   });
 });
 
-function previewThumbnailsUploaded(this){
-  $(this).change(
+function previewThumbnailsUploaded(thumbnail-id){
+  $(thumbnail-id).change(
     function() {
         if ( !this.files.length ) {
             return;
@@ -18,7 +18,7 @@ function previewThumbnailsUploaded(this){
             $('<img>').attr('src', filereader.result).css({
               'display': 'inline',
               'width': '100%',
-              'height' : '100%',
+              'height' : 'auto',
               'text-align': 'center',
               'overflow': 'hidden'
             });
